@@ -1,0 +1,22 @@
+button{
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+.row-1{
+    width: 200px;
+    margin-right: 5px;
+}
+
+.row-2{
+    margin-right: 5px;
+}
+
+#search{
+    width: 340px;
+}
+
+input{
+    border-radius: 5px;
+}
