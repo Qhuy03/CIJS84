@@ -5,30 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./b4.css">
-</head>
-<body>
-    <form>
-        <div>
-            <div style="float: left;">
-                <input class="row-1" type="text" placeholder="Tên">
-            </div>
-            <div style="float: left;">
-                <input class="row-1" type="text" placeholder="Điện Thoại">
-            </div>
-            <button style="clear: both;">Thêm</button>
-        </div>
 
-        <div style="margin-top: 10px;">
-            <div style="float: left;">
-                <input id="search" class="row-2" type="text" placeholder="Tìm kiếm">
-            </div>
-            <button class="row-2" style="float: left;">Tìm</button>
-            <button style="clear: both;">Xóa Trùng</button>
+    <style>
+        table{
+           border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+       }
+       th,td{
+        border: 1px solid black;
+        text-align: center;
+       }
+    </style>
+</head>
+
+<body>
+    <form action="">
+       <div  >
+        <div>
+            <input type="text" placeholder="Tên" style="border-radius: 5px ;" class="ip_ten">
+            <input type="text" placeholder="Điện thoại" style="border-radius: 5px ;" class="ip_dt">
+            <button style="background-color: blue; border-radius: 5px ;" class="btn_them">Thêm </button >
         </div>
+        <hr>
+       </div>
+
+       <div>
+        <input type="text" placeholder="Tìm kiếm " style="width:265px ;border-radius: 5px ;" class="ip_timkiem">
+        <button style="background-color: blue; border-radius: 5px ;" class="btn_tim">Tìm</button>
+        <button style="background-color: blue; border-radius: 5px ;" class="btn_xoa">Xóa Trùng</button>
+       </div>
 
     </form>
+    <div style="width: 500px; margin-top: 15px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>SDT</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                    
+    
+            </tbody>
+        </table>
+    </div>
 
     <script src="./b4.js"></script>
 </body>
+
 </html>
