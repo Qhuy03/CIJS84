@@ -1,6 +1,25 @@
 import React from "react";
+import { Button } from "reactstrap";
 
 const Student = (props) => {
+
+    const handleDeleteStudent = () => {
+      console.log('props.id = ', props.id);
+      props.onDelete(props.id);
+    };
+
+    const handleUpdateStudent = () => {
+      const student = {
+        id: props.id,
+        firstName: props.firstName,
+        lastName: props.lastName,
+        username: props.username,
+      }
+      props.onUpdate(student);
+    };
+
+
+
     return (
         <tr>
          <th scope="row">
@@ -14,6 +33,13 @@ const Student = (props) => {
          </td>
          <td>
            {props.username}
+         </td>
+         <td>
+          <span style={{marginRight: '10px'}}>
+            <Button color="secondary" onClick={handleUpdateStudent}>Update</Button>
+          </span>
+          
+           <Button color="danger" onClick={handleDeleteStudent}>Delete</Button>
          </td>
        </tr>
     );
