@@ -2,8 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState } from'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Table, Container,Button } from 'reactstrap';
+import { Table, Container,Button,Input } from 'reactstrap';
 import Student from './layout/Student';
+
 
 
 function App() {
@@ -46,11 +47,13 @@ function App() {
     }
   ])
 
-  const[id,setId] = useState(null);
+  const[id,setId] = useState('');
   const[firstName,setFirstName] = useState('');
   const[lastName,setLastName] = useState('');
   const[username,setUsername] = useState('');
   const[isUpdate,setIsUpdate] = useState(false);
+  const[keywork,setKeywork] = useState('');
+  const[listStudentFilter,setListStudentFilter] = useState([]);
 
   const handleAddStudent = ()=>{
     console.log('test abc');
@@ -135,6 +138,37 @@ function App() {
     setUsername('');
   };
 
+  const handleSearch = (event)=>{
+    setKeywork(event.target.value);
+
+    // const keywork = event.target.value;
+    // console.log(keywork);
+
+    // // const listNewStudent = listStudent.filter((student)=>{
+    // //   return student.firstName.toLowerCase().includes(event.target.value.toLowerCase()) || student.lastName.toLowerCase().includes(event.target.value.toLowerCase()) || student.username.toLowerCase().includes(event.target.value.toLowerCase());
+    // // })
+    // // setListStudent(listNewStudent);
+
+    // const result = listStudent.filter((student)=>{
+    //   return student.username.includes(keywork);
+    // });
+    // setListStudent(result);
+  };
+
+  const handleClickSearch = ()=>{
+    
+    const result = listStudent.filter((student)=>{
+      return (
+        student.username.includes(keywork)||
+        student.firstName.includes(keywork)||
+        student.lastName.includes(keywork)
+
+        );
+    });
+    setListStudentFilter(result);
+  };
+
+
 
   return (
    <>
@@ -172,7 +206,12 @@ function App() {
        
       
     </div>
-
+      <div className='mt-5' style={{display: 'flex'}}>
+        <Input onChange={handleSearch}/>
+        <Button onClick={handleClickSearch} color='primary' style={{marginLeft: '8px' }}>
+          Search
+        </Button>
+      </div>
     
    
    <Table>
@@ -197,10 +236,25 @@ function App() {
      </thead>
      <tbody>
       {
-        listStudent.map((student) => {
+        listStudentFilter.length > 0 ? listStudentFilter
+        // .filter((student) => student.username.includes(keywork))
+        .map((student) => {
           return (
           
-          <Student 
+          <Student key = {student.id}
+            id={student.id}
+            firstName = {student.firstName} 
+            lastName = {student.lastName}
+            username = {student.username} 
+            onDelete = {deleteStudent}
+            onUpdate = {updateStudent}
+          />
+          );
+        })
+        :listStudent.map((student) => {
+          return (
+          
+          <Student key = {student.id}
             id={student.id}
             firstName = {student.firstName} 
             lastName = {student.lastName}
