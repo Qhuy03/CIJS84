@@ -18,11 +18,11 @@ function App() {
   // },[count]);
 
   useEffect(()=>{
-    document.getElementById('scroll', ()=>{
+    document.addEventListener('scroll', ()=>{
       const possition = document.documentElement.scrollTop;
       console.log('scrolling position', possition);
 
-      if(possition < 100){
+      if(possition < 500){
               document.getElementById('btn-back-to-top').style.display = 'none';
             }else{
               document.getElementById('btn-back-to-top').style.display = 'block';
@@ -136,6 +136,7 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
         height: '75px',
         width: '75px',
         border: '1px solid black',
+        borderRadius: '50%'
         // display: 'none'
 
       }} 
